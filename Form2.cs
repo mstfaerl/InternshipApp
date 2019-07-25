@@ -27,22 +27,18 @@ namespace InternshipApp
             try
             {
                 connect.Open();
-                SqlCommand query = new SqlCommand("insert into MaterialsTable(Name,Description,Quantity,Supplier,Price) values('" + materialName.Text + "','" + materialDescription.Text + "','" + Convert.ToInt32(materialQuantity.Text) + "','" + materialSupplier.Text + "','" + float.Parse(materialPrice.Text) + "') ", connect);
+                SqlCommand query = new SqlCommand("insert into MaterialsTable(Name,Description,Quantity,Supplier,Price,AlarmLevel) values('" + materialName.Text + "','" + materialDescription.Text + "','" + Convert.ToInt32(materialQuantity.Text) + "','" + materialSupplier.Text + "','" + float.Parse(materialPrice.Text) + "','" + Convert.ToInt32(alarmLevel.Text) + "')", connect);
                 query.ExecuteNonQuery();  
-                MessageBox.Show("Inserted Succesfully!"); 
+                MessageBox.Show("Inserted Succesfully!");
+                this.Hide();
+                Form1 form1 = new Form1();
+                form1.Show();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please check the values you entered");
+                MessageBox.Show("Please check the values you entered!" + ex.Message);
             }
             connect.Close();
-        }
-
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form1 form1 = new Form1();
-            form1.Show();
-            
         }
 
     }

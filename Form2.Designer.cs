@@ -40,6 +40,8 @@
             this.materialName = new System.Windows.Forms.TextBox();
             this.addMaterial = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.alarmLevel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label6
@@ -130,7 +132,7 @@
             // 
             // addMaterial
             // 
-            this.addMaterial.Location = new System.Drawing.Point(312, 503);
+            this.addMaterial.Location = new System.Drawing.Point(308, 586);
             this.addMaterial.Margin = new System.Windows.Forms.Padding(4);
             this.addMaterial.Name = "addMaterial";
             this.addMaterial.Size = new System.Drawing.Size(186, 45);
@@ -149,11 +151,31 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Add New Material Page";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 537);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 24);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Alarm Level";
+            // 
+            // alarmLevel
+            // 
+            this.alarmLevel.Location = new System.Drawing.Point(216, 534);
+            this.alarmLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.alarmLevel.Name = "alarmLevel";
+            this.alarmLevel.Size = new System.Drawing.Size(278, 32);
+            this.alarmLevel.TabIndex = 27;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 557);
+            this.BackColor = System.Drawing.Color.LemonChiffon;
+            this.ClientSize = new System.Drawing.Size(507, 644);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.alarmLevel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addMaterial);
             this.Controls.Add(this.label6);
@@ -170,8 +192,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form2";
             this.Text = "Add New Material";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
-//            this.Load += new System.EventHandler(this.Form2_Load);
+//            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +212,7 @@
         private System.Windows.Forms.TextBox materialName;
         private System.Windows.Forms.Button addMaterial;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox alarmLevel;
     }
 }

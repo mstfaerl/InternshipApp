@@ -40,6 +40,8 @@
             this.materialQuantity = new System.Windows.Forms.TextBox();
             this.materialDescription = new System.Windows.Forms.TextBox();
             this.materialName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.alarmLevel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +56,7 @@
             // 
             // updateMaterial
             // 
-            this.updateMaterial.Location = new System.Drawing.Point(312, 503);
+            this.updateMaterial.Location = new System.Drawing.Point(308, 586);
             this.updateMaterial.Margin = new System.Windows.Forms.Padding(4);
             this.updateMaterial.Name = "updateMaterial";
             this.updateMaterial.Size = new System.Drawing.Size(186, 45);
@@ -149,11 +151,31 @@
             this.materialName.Size = new System.Drawing.Size(278, 32);
             this.materialName.TabIndex = 27;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 527);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 24);
+            this.label7.TabIndex = 40;
+            this.label7.Text = "Alarm Level";
+            // 
+            // alarmLevel
+            // 
+            this.alarmLevel.Location = new System.Drawing.Point(216, 525);
+            this.alarmLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.alarmLevel.Name = "alarmLevel";
+            this.alarmLevel.Size = new System.Drawing.Size(278, 32);
+            this.alarmLevel.TabIndex = 39;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 557);
+            this.BackColor = System.Drawing.Color.LemonChiffon;
+            this.ClientSize = new System.Drawing.Size(507, 644);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.alarmLevel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.updateMaterial);
             this.Controls.Add(this.label6);
@@ -170,7 +192,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form3";
             this.Text = "Update Material";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
+//            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +212,7 @@
         private System.Windows.Forms.TextBox materialQuantity;
         private System.Windows.Forms.TextBox materialDescription;
         private System.Windows.Forms.TextBox materialName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox alarmLevel;
     }
 }

@@ -30,6 +30,7 @@ namespace InternshipApp
             materialQuantity.Text = Form1.uQuantity.ToString();
             materialSupplier.Text = Form1.uSupplier;
             materialPrice.Text = Form1.uPrice.ToString();
+            alarmLevel.Text = Form1.uAlarmLevel.ToString();
         }
 
         private void UpdateMaterial_Click(object sender, EventArgs e)
@@ -37,22 +38,19 @@ namespace InternshipApp
             try
             {
                 connect.Open();
-                SqlCommand query = new SqlCommand("update MaterialsTable set Name='" + materialName.Text + "',Description='" + materialDescription.Text + "',Quantity='" + Convert.ToInt32(materialQuantity.Text) + "',Supplier='" + materialSupplier.Text + "',Price='" + float.Parse(materialPrice.Text) + "' where Id='" + Form1.uId + "'", connect);
+                SqlCommand query = new SqlCommand("update MaterialsTable set Name='" + materialName.Text + "',Description='" + materialDescription.Text + "',Quantity='" + Convert.ToInt32(materialQuantity.Text) + "',Supplier='" + materialSupplier.Text + "',Price='" + float.Parse(materialPrice.Text) + "',AlarmLevel ='" + Convert.ToInt32(alarmLevel.Text) + "' where Id='" + Form1.uId + "'", connect);
                 query.ExecuteNonQuery();
                 MessageBox.Show("Updated Succesfully!");
+                this.Hide();
+                Form1 form1 = new Form1();
+                form1.Show();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please check the values you entered");
+                MessageBox.Show("Please check the values you entered " + ex.Message);
             }
             connect.Close();
-        }
-
-        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form1 form1 = new Form1();
-            form1.Show();
         }
     }
 }

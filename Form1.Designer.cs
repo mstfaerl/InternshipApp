@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.materialList = new System.Windows.Forms.DataGridView();
             this.searchingText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,19 +45,26 @@
             // materialList
             // 
             this.materialList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.materialList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.materialList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.materialList.Location = new System.Drawing.Point(12, 53);
             this.materialList.Name = "materialList";
             this.materialList.RowHeadersWidth = 51;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.materialList.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.materialList.RowTemplate.Height = 24;
-            this.materialList.Size = new System.Drawing.Size(886, 380);
+            this.materialList.Size = new System.Drawing.Size(993, 380);
             this.materialList.TabIndex = 13;
             this.materialList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MaterialList_CellDoubleClick);
             this.materialList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MaterialList_CellMouseClick);
             // 
             // searchingText
             // 
-            this.searchingText.Location = new System.Drawing.Point(712, 482);
+            this.searchingText.Location = new System.Drawing.Point(816, 483);
             this.searchingText.Name = "searchingText";
             this.searchingText.Size = new System.Drawing.Size(186, 32);
             this.searchingText.TabIndex = 14;
@@ -65,7 +73,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(708, 455);
+            this.label7.Location = new System.Drawing.Point(812, 456);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(180, 24);
             this.label7.TabIndex = 15;
@@ -84,7 +92,7 @@
             // 
             // alarmButton
             // 
-            this.alarmButton.Location = new System.Drawing.Point(206, 482);
+            this.alarmButton.Location = new System.Drawing.Point(206, 480);
             this.alarmButton.Margin = new System.Windows.Forms.Padding(4);
             this.alarmButton.Name = "alarmButton";
             this.alarmButton.Size = new System.Drawing.Size(186, 34);
@@ -95,7 +103,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.menuStrip1.BackColor = System.Drawing.Color.LemonChiffon;
             this.menuStrip1.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -103,7 +111,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(910, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1017, 30);
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -133,7 +141,8 @@
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(910, 548);
+            this.BackColor = System.Drawing.Color.LemonChiffon;
+            this.ClientSize = new System.Drawing.Size(1017, 545);
             this.Controls.Add(this.alarmButton);
             this.Controls.Add(this.deleteMaterial);
             this.Controls.Add(this.label7);

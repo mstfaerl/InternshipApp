@@ -10,14 +10,12 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Media;
-using NuGet.Protocol.Core.Types;
+using LibGit2Sharp;
 
 namespace InternshipApp
 {
     public partial class Form1 : Form
     {
-
-        
 
         //Sql Connection
         SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\m07er\\source\\repos\\InternshipApp\\Database.mdf;Integrated Security=True");
@@ -43,7 +41,6 @@ namespace InternshipApp
         //    listMaterial();
         //}
 
-
         private void MaterialForm_Shown(object sender, EventArgs e)
         {
             checkQuantity();
@@ -52,26 +49,17 @@ namespace InternshipApp
         //DELETE
         private void DeleteMaterial_Click(object sender, EventArgs e)
         {
-            try
-            {
                 connect.Open();
                 SqlCommand query = new SqlCommand("delete from MaterialsTable where Id='" + sId + "'", connect);
                 query.ExecuteNonQuery();
+                connect.Close();
                 MessageBox.Show("Deleted Succesfully!");
                 listMaterial();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please check the values you entered");
-            }
-            connect.Close();
-
         }
 
         //LIST
         public void listMaterial()
         {
-
             connect.Open();
             string query = "select * from MaterialsTable";
             SqlDataAdapter sda = new SqlDataAdapter(query, connect);
@@ -79,31 +67,15 @@ namespace InternshipApp
             sda.Fill(dt);
             materialList.DataSource = dt;
             connect.Close();
-            //SqlDataReader reader = query.ExecuteReader();
-
-            //while (reader.Read())
-            //{
-
-            //}
         }
-
-        //SEARCH with Name
-        //private void SearchingName_TextChanged(object sender, EventArgs e)
-        //{
-        //    DataView dv = dt.DefaultView;
-        //    dv.RowFilter = string.Format("Name like '" + searchingText.Text + "' + '%' OR Description like '" + searchingText.Text + "' + '%'");
-        //    materialList.DataSource = dv;
-
-        //}
-
-        //When selected item in datagridview putting data in textbox
         
 
         //Quantity control
         public void checkQuantity()
         {
+            
             connect.Open();
-            SqlCommand query = new SqlCommand("select Quantity,Name from MaterialsTable where Quantity < 5", connect);
+            SqlCommand query = new SqlCommand("select Quantity,Name from MaterialsTable where Quantity < AlarmLevel", connect);
             SqlDataReader dr = query.ExecuteReader();
             QuantityAlarm alarmQuantityName = null;
             nameList = new List<QuantityAlarm>();
@@ -133,6 +105,7 @@ namespace InternshipApp
             }
 
             connect.Close();
+            
         }
 
         private void AlarmButton_Click(object sender, EventArgs e)
@@ -148,12 +121,6 @@ namespace InternshipApp
             this.Hide();
         }
 
-        //private void MaterialList_DoubleClick(object sender, EventArgs e)
-        //{
-        //    Form3 updateMat = new Form3();
-        //    updateMat.Show();
-        //}
-
         private void SearchingText_TextChanged(object sender, EventArgs e)
         {
             DataView dv = dt.DefaultView;
@@ -167,6 +134,7 @@ namespace InternshipApp
         public static int uQuantity;
         public static string uSupplier;
         public static float uPrice;
+        public static int uAlarmLevel;
         
         private void MaterialList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -179,6 +147,7 @@ namespace InternshipApp
                 uQuantity = Convert.ToInt32(row.Cells["Quantity"].Value.ToString());
                 uSupplier = row.Cells["Supplier"].Value.ToString();
                 uPrice = float.Parse(row.Cells["Price"].Value.ToString());
+                uAlarmLevel = Convert.ToInt32(row.Cells["AlarmLevel"].Value.ToString());
                 Form3 updateMat = new Form3();
                 updateMat.Show();
             }
@@ -192,7 +161,17 @@ namespace InternshipApp
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.materialList.Rows[e.RowIndex];
-                sId = Convert.ToInt16(row.Cells["Id"].Value);
+                try{
+                    if (row.Cells["Id"].Value != null)
+                    {
+                        sId = Convert.ToInt16(row.Cells["Id"].Value);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("You clicked wrong! " + ex.Message);
+                }
+                
             }
             
         }
@@ -204,15 +183,17 @@ namespace InternshipApp
 
         private void UpdateGitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                Repository.Clone("https://github.com/mstfaerl/git-dersleri.git", @"D:\GitHubApp");
+                MessageBox.Show("Completed successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("You already have this file. " + ex.Message);
+            }
+            
         }
-
-        public void gitUpdate()
-        {
-            Repository.Clone("https://github.com/mstfaerl/git-dersleri.git", @"D:\GithubFile");
-        }
-        
-
 
         //private void CheckMaterial_Click(object sender, EventArgs e)
         //{
