@@ -185,7 +185,7 @@ namespace InternshipApp
         {
             try
             {
-                Repository.Clone("https://github.com/mstfaerl/git-dersleri.git", @"D:\GitHubApp");
+                Repository.Clone("https://github.com/mstfaerl/InternshipApp.git", @"D:\GitHubApp");
                 MessageBox.Show("Completed successfully!");
             }
             catch (Exception ex)
